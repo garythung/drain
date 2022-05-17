@@ -9,23 +9,29 @@ import {ERC1155 as SolmateERC1155} from "solmate/tokens/ERC1155.sol";
 import "./Utils.sol";
 import "../Drain.sol";
 
+/// @dev Gas test for contract deployment.
+contract DrainDeploy is Test {
+    Drain internal drain;
+
+    function testDeploy() public {
+        drain = new Drain();
+    }
+}
+
 contract BaseUsers is Test {
     Utils internal utils;
     address payable[] internal users;
 
     address internal alice;
-    address internal bob;
     address internal admin;
 
     constructor() {
         utils = new Utils();
-        users = utils.createUsers(3);
+        users = utils.createUsers(2);
 
         alice = users[0];
         vm.label(alice, "Alice");
         admin = users[1];
-        vm.label(bob, "Bob");
-        admin = users[2];
         vm.label(admin, "Admin");
     }
 }

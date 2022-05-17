@@ -2,8 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "solmate/utils/SafeTransferLib.sol";
-import {ERC20 as SolmateERC20} from "solmate/tokens/ERC20.sol";
+import "solmate/utils/SafeTransferLib.sol"; // imports ERC20
 
 interface ERC721 {
     function safeTransferFrom(address from, address to, uint256 id) external;
@@ -14,7 +13,7 @@ interface ERC1155 {
 }
 
 contract Drain is Ownable {
-    using SafeTransferLib for SolmateERC20;
+    using SafeTransferLib for ERC20;
 
     // CONSTANTS //
 
@@ -36,7 +35,7 @@ contract Drain is Ownable {
         uint256 numContracts = _tokens.length;
 
         for (uint256 i = 0; i < numContracts;) {
-            SolmateERC20(_tokens[i]).safeTransfer(_recipient, _amounts[i]);
+            ERC20(_tokens[i]).safeTransfer(_recipient, _amounts[i]);
             unchecked { ++i; }
         }
     }
@@ -78,7 +77,7 @@ contract Drain is Ownable {
         require(numContracts > 0, "MUST_SWAP_TOKENS");
 
         for (uint256 i = 0; i < numContracts;) {
-            SolmateERC20(_tokens[i]).safeTransferFrom(msg.sender, address(this), _amounts[i]);
+            ERC20(_tokens[i]).safeTransferFrom(msg.sender, address(this), _amounts[i]);
             unchecked { ++i; }
         }
 
