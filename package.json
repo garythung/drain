@@ -1,5 +1,5 @@
 {
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "chalk": "^5.0.1",
     "dotenv": "^16.0.0",

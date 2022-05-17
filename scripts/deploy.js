@@ -14,6 +14,7 @@ const deploy = async () => {
     name: "Drain",
     deployer: wallet,
     factory: Factory,
+    args: [],
     opts: {
       gasLimit: 1000000,
     },

@@ -31,7 +31,11 @@ contract Drain is Ownable {
     /// @param _recipient Where to send the tokens.
     /// @param _tokens Which tokens to retrieve.
     /// @param _amounts How many tokens to retrieve.
-    function batchRetrieveERC20(address _recipient, address[] calldata _tokens, uint256[] calldata _amounts) external onlyOwner {
+    function batchRetrieveERC20(
+        address _recipient,
+        address[] calldata _tokens,
+        uint256[] calldata _amounts
+    ) external onlyOwner {
         uint256 numContracts = _tokens.length;
 
         for (uint256 i = 0; i < numContracts;) {
@@ -44,7 +48,11 @@ contract Drain is Ownable {
     /// @param _recipient Where to send the tokens.
     /// @param _tokens Which token to retrieve.
     /// @param _ids Which token ID to retrieve.
-    function batchRetrieveERC721(address _recipient, address[] calldata _tokens, uint256[] calldata _ids) external onlyOwner {
+    function batchRetrieveERC721(
+        address _recipient,
+        address[] calldata _tokens,
+        uint256[] calldata _ids
+    ) external onlyOwner {
         uint256 numContracts = _tokens.length;
 
         for (uint256 i = 0; i < numContracts;) {
@@ -58,7 +66,12 @@ contract Drain is Ownable {
     /// @param _tokens Which token to retrieve.
     /// @param _ids Which token ID to retrieve.
     /// @param _amounts How many tokens to retrieve.
-    function batchRetrieveERC1155(address _recipient, address[] calldata _tokens, uint256[] calldata _ids, uint256[] calldata _amounts) external onlyOwner {
+    function batchRetrieveERC1155(
+        address _recipient,
+        address[] calldata _tokens,
+        uint256[] calldata _ids,
+        uint256[] calldata _amounts
+    ) external onlyOwner {
         uint256 numContracts = _tokens.length;
 
         for (uint256 i = 0; i < numContracts;) {
@@ -72,7 +85,10 @@ contract Drain is Ownable {
     /// @notice Swap ERC20 tokens for 420 wei.
     /// @param _tokens Which tokens to swap.
     /// @param _amounts How many tokens to swap.
-    function batchSwapERC20(address[] calldata _tokens, uint256[] calldata _amounts) external {
+    function batchSwapERC20(
+        address[] calldata _tokens,
+        uint256[] calldata _amounts
+    ) external {
         uint256 numContracts = _tokens.length;
         require(numContracts > 0, "MUST_SWAP_TOKENS");
 
@@ -87,7 +103,10 @@ contract Drain is Ownable {
     /// @notice Swap ERC721 tokens for 420 wei.
     /// @param _tokens Which tokens to swap.
     /// @param _ids Which token IDs to swap.
-    function batchSwapERC721(address[] calldata _tokens, uint256[] calldata _ids) external {
+    function batchSwapERC721(
+        address[] calldata _tokens,
+        uint256[] calldata _ids
+    ) external {
         uint256 numContracts = _tokens.length;
         require(numContracts > 0, "MUST_SWAP_TOKENS");
 
@@ -103,7 +122,11 @@ contract Drain is Ownable {
     /// @param _tokens Which tokens to swap.
     /// @param _ids Which token IDs to swap.
     /// @param _amounts How many tokens to swap.
-    function batchSwapERC1155(address[] calldata _tokens, uint256[] calldata _ids, uint256[] calldata _amounts) external {
+    function batchSwapERC1155(
+        address[] calldata _tokens,
+        uint256[] calldata _ids,
+        uint256[] calldata _amounts
+    ) external {
         uint256 numContracts = _tokens.length;
         require(numContracts > 0, "MUST_SWAP_TOKENS");
 
